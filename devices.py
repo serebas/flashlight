@@ -5,10 +5,10 @@ from asyncio import AbstractEventLoop
 from tkinter import Canvas, Tk
 from typing import TypeVar
 
-from transports import NetworkTCPProtocol, TLVMessage
+from transports import NetworkTCP, TLVMessage
 
 
-T = TypeVar('T', bound=NetworkTCPProtocol)
+T = TypeVar('T', bound=NetworkTCP)
 
 class RemoteDevice(ABC):
     """
@@ -53,6 +53,8 @@ class Flashlight(RemoteDevice):
 
     def connect(self, host='127.0.0.1', port=9999) -> None:
         """
+        Метод для подключения фонаря к серверу
+
         :host: - адрес сервера для подключения
         :port: - порт сервера для подключения
         """

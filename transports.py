@@ -1,21 +1,20 @@
 import socket
 import struct
-
 from abc import ABC
 
 
-class NetworkTCPProtocol(ABC):
+class NetworkTCP(ABC):
     pass
 
 
-class FCProtocol(NetworkTCPProtocol):
+class FCProtocol(NetworkTCP):
     """
     Flashlight Control Protocol - Протокол управления фонарем (v1)
     """
     def __init__(self) -> None:
         """
         :socket: - сокет, через который протокол работает по сети
-        :available_commands: - словарь с командами, которые может реализовать протокол.
+        :available_commands: - словарь с командами, которые поддерживает протокол.
                                Ключами являются значениями поля type, передаваемого сообщения
         """
         super().__init__()
