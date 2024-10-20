@@ -75,7 +75,10 @@ class Flashlight(RemoteDevice):
         Метод для приема команд фонаря от сервера
         """
         try:
-            while data := await self.loop.sock_recv(self.protocol.socket, 1024):
+            while True:
+                data = await self.loop.sock_recv(self.protocol.socket, 1024)
+                if not data:
+                    break
                 message = TLVMessage(data)
                 message.decode_fields()
                 available_commands = self.protocol.available_commands
